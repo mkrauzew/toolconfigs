@@ -18,7 +18,8 @@ SELECTION=$(dialog \
     "1" "Custom Git Commands" off \
     "2" ".vimrc" off \
     "3" ".bash_aliases" off \
-    "4" ".tmux.conf" off \
+    "4" ".bash_functions" off \
+    "5" ".tmux.conf" off \
     2>&1 1>&3)
 
 EXIT_STATUS=$?
@@ -59,6 +60,11 @@ for s in ${SELECTION}; do
             echo
             ;;
         "4")
+            echo ">>>>>> INSTALLING: .bash_functions <<<<<<"
+            cp -i bash_functions/bash_functions ~/.bash_functions
+            echo
+            ;;
+        "5")
             echo ">>>>>> INSTALLING: .tmux.conf <<<<<<"
             cp -i tmux.conf/tmux.conf ~/.tmux.conf
             echo

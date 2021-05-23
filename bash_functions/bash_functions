@@ -1,0 +1,26 @@
+# grep variation that prints all lines and highlights the matches (provided that colors for grep are enabled)
+grepall ()
+{
+    grep -E "${1}|$"
+}
+
+# repeat command given in first param every n-seconds
+function repeat() {
+
+   if [[ -z "${1}" || -z "${2}" ]]
+   then
+      echo "Usage: repeat <interval> <command>"
+      return 1
+   fi
+
+   while true
+   do
+      # treat all params starting from $2 as a single command to be run
+      ${*:2}
+      sleep ${1}
+   done
+
+}
+
+export -f grepall
+export -f repeat
