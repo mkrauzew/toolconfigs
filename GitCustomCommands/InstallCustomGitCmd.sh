@@ -30,6 +30,9 @@ PRESENT_ALIASES+="$(_alias_present cc)"
 PRESENT_ALIASES+="$(_alias_present smi)"
 PRESENT_ALIASES+="$(_alias_present smu)"
 PRESENT_ALIASES+="$(_alias_present smur)"
+PRESENT_ALIASES+="$(_alias_present iadd)"
+PRESENT_ALIASES+="$(_alias_present iunstage)"
+PRESENT_ALIASES+="$(_alias_present ico)"
 
 PRESENT_ALIASES+="$(_alias_present try-merge)"
 PRESENT_ALIASES+="$(_alias_present try-ff)"
@@ -74,6 +77,9 @@ git config --global alias.lp		"log -p"
 git config --global alias.smi		"submodule init"
 git config --global alias.smu		"submodule update"
 git config --global alias.smur		"submodule update --remote"
+git config --global alias.iadd		"!bash ~/.git_interactive \"git add\""
+git config --global alias.iunstage	"!bash ~/.git_interactive \"git reset HEAD\""
+git config --global alias.ico		"!bash ~/.git_interactive \"git checkout --\""
 
 # OTHER CONFIGS:
 

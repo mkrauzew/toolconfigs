@@ -47,6 +47,8 @@ for s in ${SELECTION}; do
         "1")
             echo ">>>>>> INSTALLING: Custom Git Commands <<<<<<"
             GitCustomCommands/InstallCustomGitCmd.sh
+            cp GitCustomCommands/git_interactive.sh ~/.git_interactive
+            chmod 755 ~/.git_interactive
             echo
             ;;
         "2")
