@@ -108,3 +108,7 @@ vnoremap <C-Delete> "+d
 
 "" Use space to open folds
 nnoremap <space> za
+
+"" Use '#' and '-#' in visual mode for Python block commenting/uncommenting
+au FileType python vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+au FileType python vnoremap <silent> -# :s/^#//<cr>:noh<cr>
