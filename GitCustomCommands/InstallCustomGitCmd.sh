@@ -49,6 +49,7 @@ PRESENT_ALIASES+="$(_alias_present try-ff)"
 PRESENT_ALIASES+="$(_alias_present graph)"
 PRESENT_ALIASES+="$(_alias_present branch-cleanup)"
 PRESENT_ALIASES+="$(_alias_present find-copies)"
+PRESENT_ALIASES+="$(_alias_present export)"
 
 # Test if we would overwrite any other present configs
 PRESENT_CONFIGS=""
@@ -126,13 +127,14 @@ echo \"\${c_GREEN}/ =============================== MKW's Custom Git Commands ==
 echo \"\${c_GREEN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\${c_NC}\n\"; \
 echo \"\${c_GREEN}Requires Git >= 2.20 for full compatibility. Some commands may not work in lower versions.\${c_NC}\n\"; \
 echo \"\${c_WHITE}REGULAR COMMANDS\${c_NC}\n\"; \
-echo \" \${c_WHITE}git \${c_RED}belongs\${c_WHITE} <commit>\${c_NC}               : display branches that the <commit> belongs to.\n\"; \
-echo \" \${c_WHITE}git \${c_RED}follow\${c_WHITE} <path>\${c_NC}                  : display file history across commits.\n\"; \
-echo \" \${c_WHITE}git \${c_RED}try-merge\${c_WHITE} <dev> <master>\${c_NC}       : see how merge of dev into master would go. In case of conflicts, \${c_WHITE}.our\${c_NC} will be master's side and \${c_WHITE}.their\${c_NC} will be dev's side.\n\"; \
-echo \" \${c_WHITE}git \${c_RED}try-ff\${c_WHITE} <from> <to>\${c_NC}             : check if fast-forward merge is possible.\n\"; \
-echo \" \${c_WHITE}git \${c_RED}graph\${c_WHITE} [<revision range>|--all]\${c_NC} : git log --graph with nice format.\n\"; \
-echo \" \${c_WHITE}git \${c_RED}branch-cleanup\${c_NC}                 : prune remote-tracking branches for current remote, then delete all local branches that track gone remotes. 'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
-echo \" \${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit>\${c_NC}           : find copies of a commit (for example ones that were cherry-picked). Warning - on big repos this may take several minutes.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}belongs\${c_WHITE} <commit>\${c_NC}                : display branches that the <commit> belongs to.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}follow\${c_WHITE} <path>\${c_NC}                   : display file history across commits.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}try-merge\${c_WHITE} <dev> <master>\${c_NC}        : see how merge of dev into master would go. In case of conflicts, \${c_WHITE}.our\${c_NC} will be master's side and \${c_WHITE}.their\${c_NC} will be dev's side.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}try-ff\${c_WHITE} <from> <to>\${c_NC}              : check if fast-forward merge is possible.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}graph\${c_WHITE} [<revision range>|--all]\${c_NC}  : git log --graph with nice format.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}branch-cleanup\${c_NC}                  : prune remote-tracking branches for current remote, then delete all local branches that track gone remotes. 'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit>\${c_NC}            : find copies of a commit (for example ones that were cherry-picked). Warning - on big repos this may take several minutes.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}export\${c_WHITE} <commit> <target dir>\${c_NC}    : copy repository contents as they were in \${c_WHITE}commit\${c_NC} to \${c_WHITE}target dir\${c_NC}.\n\"; \
 echo; \
 echo \"\${c_WHITE}INTERACTIVE COMMANDS\${c_NC}\n\"; \
 echo \"\${c_NC}These commands allow to interactively choose files to perform operations on. Only files that would be visible in \${c_WHITE}git status --short\${c_NC} are available. It is required to have package \${c_WHITE}dialog\${c_NC} installed.\${c_NC}\n\"; \
@@ -187,6 +189,9 @@ git config --global alias.branch-cleanup "!f() { git fetch --prune; git branch -
 # find copies of a commit by patch-id
 git config --global alias.find-copies "!f() { PATCHID_TO_FIND=\`git show \$1|git patch-id|cut -d' ' -f1\`; COMMIT_LOOKED_FOR=\`git rev-parse \$1\`; for c in \$(git rev-list --all);\
 do git show \$c | git patch-id; done | grep -F \$PATCHID_TO_FIND|cut -d' ' -f2|grep -v \$COMMIT_LOOKED_FOR; }; f"
+
+# copy repo in specific version to an external folder
+git config --global alias.export "!f() { git archive --format=tar \$1 | (mkdir -p \$2 && cd \$2 && tar xf -) }; f"
 
 echo "Installation DONE"
 
