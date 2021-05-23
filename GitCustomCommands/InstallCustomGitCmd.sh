@@ -33,6 +33,8 @@ PRESENT_ALIASES+="$(_alias_present smur)"
 PRESENT_ALIASES+="$(_alias_present iadd)"
 PRESENT_ALIASES+="$(_alias_present iunstage)"
 PRESENT_ALIASES+="$(_alias_present ico)"
+PRESENT_ALIASES+="$(_alias_present idf)"
+PRESENT_ALIASES+="$(_alias_present idc)"
 
 PRESENT_ALIASES+="$(_alias_present try-merge)"
 PRESENT_ALIASES+="$(_alias_present try-ff)"
@@ -80,6 +82,8 @@ git config --global alias.smur		"submodule update --remote"
 git config --global alias.iadd		"!bash ~/.git_interactive \"git add\""
 git config --global alias.iunstage	"!bash ~/.git_interactive \"git reset HEAD\""
 git config --global alias.ico		"!bash ~/.git_interactive \"git checkout --\""
+git config --global alias.idf		"!bash ~/.git_interactive \"git diff\""
+git config --global alias.idc		"!bash ~/.git_interactive \"git diff --cached\""
 
 # OTHER CONFIGS:
 
