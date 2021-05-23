@@ -114,6 +114,7 @@ echo \"\${c_WHITE}git \${c_RED}try-merge\${c_WHITE} <dev> <master> \${c_NC}: see
 echo \"In case of conflicts, .our will be master's side and .their will be dev's side.\n\"; \
 echo \"\${c_WHITE}git \${c_RED}try-ff\${c_WHITE} <from> <to> \${c_NC}: check if fast-forward merge is possible.\n\"; \
 echo \"\${c_WHITE}git \${c_RED}graph\${c_WHITE} [<revision range>|--all] \${c_NC}: git log --graph with nice format.\n\"; \
+echo \"\${c_WHITE}git \${c_RED}belongs\${c_WHITE} <commit> \${c_NC}: display branches that the <commit> belongs to.\n\"; \
 echo \"\${c_WHITE}git \${c_RED}branch-cleanup\${c_NC} : prune remote-tracking branches for current remote, then delete all local branches that track gone remotes.\"; \
 echo \"'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
 echo \"\${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit> \${c_NC}: find copies of a commit (for example ones that were cherry-picked).\"; \
