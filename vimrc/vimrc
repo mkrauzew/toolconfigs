@@ -1,7 +1,7 @@
 " First, install Vundle: 'git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
 " After declaring plugins in .vimrc, run :PluginInstall to install them for the first time
 " :PluginUpdate updates plugins
-" To remove a plugin, remove its declaration from .vimrc and run :PluginUpdate
+" To remove a plugin, remove its declaration from .vimrc and run :PluginClean
 " Plugin names are their paths on github, e.g. 'VundleVim/Vundle.vim' is
 " downloaded from https://github.com/VundleVim/Vundle.vim repository
 
@@ -40,13 +40,19 @@ filetype plugin indent on
 " Make sure the <leader> is backslash
 let mapleader = "\\"
 
+" Default project config file for YCM completion (C/C++)
+" Many projects might require a custom .ycm_extra_conf.py file inside the
+" project directory. See YCM readme for details.
+let g:ycm_global_ycm_extra_conf = "$HOME/.vim/ycm.py"
+let g:ycm_extra_conf_vim_data = ['&filetype']
+
 " Wrapping and folding settings
 set textwidth=0
 set foldmethod=indent
 set foldlevel=99
 set foldlevelstart=99
 
-" Syntax highlight and numbering for Python
+" Syntax highlight and numbering
 au FileType python
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -56,9 +62,11 @@ au FileType python
     \ set autoindent |
     \ set fileformat=unix |
     \ let python_highlight_all=1 |
-    \ syntax on |
-    \ set number |
     \ map <buffer> <F6> :w<cr>:!python3 %<cr>
+
+au FileType c,cpp,python
+    \ syntax on |
+    \ set number
 
 " UTF-8 encoding
 set encoding=utf-8

@@ -52,6 +52,7 @@ for s in ${SELECTION}; do
         "2")
             echo ">>>>>> INSTALLING: .vimrc <<<<<<"
             cp -i vimrc/vimrc ~/.vimrc 
+            cp -i vimrc/ycm.py ~/.vim/ycm.py
             echo
             ;;
         "3")
