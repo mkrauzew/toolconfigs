@@ -40,12 +40,6 @@ filetype plugin indent on
 " Make sure the <leader> is backslash
 let mapleader = "\\"
 
-" Default project config file for YCM completion (C/C++)
-" Many projects might require a custom .ycm_extra_conf.py file inside the
-" project directory. See YCM readme for details.
-let g:ycm_global_ycm_extra_conf = "$HOME/.vim/ycm.py"
-let g:ycm_extra_conf_vim_data = ['&filetype']
-
 " Wrapping and folding settings
 set textwidth=0
 set foldmethod=indent
@@ -96,6 +90,8 @@ let g:SimpylFold_docstring_preview = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completon = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_global_ycm_extra_conf = "$HOME/.vim/ycm.py"
+let g:ycm_extra_conf_vim_data = ['&filetype']
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Split navigations
@@ -112,6 +108,9 @@ set splitright
 
 "" Toggle NERDTree (and PowerLine at the same time)
 nmap <C-n> :NERDTreeToggle<CR>
+
+"" Use Ctrl-P to find tags
+nnoremap <leader>. :CtrlPTag<cr>
 
 "" Copying, cutting and pasting to clipboard (register '+')
 "" Requires X11 connection to cooperate with other applications through system clipboard
