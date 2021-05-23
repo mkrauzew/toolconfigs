@@ -98,5 +98,13 @@ set splitright
 
 "" Toggle NERDTree (and PowerLine at the same time)
 nmap <C-n> :NERDTreeToggle<CR>
+
+"" Copying, cutting and pasting to clipboard (register '+')
+"" Requires X11 connection to cooperate with other applications through system clipboard
+nnoremap <S-Insert> "+p
+nnoremap <C-S-Insert> "+P
+vnoremap <C-Insert> "+y
+vnoremap <C-Delete> "+d
+
 "" Use space to open folds
 nnoremap <space> za
