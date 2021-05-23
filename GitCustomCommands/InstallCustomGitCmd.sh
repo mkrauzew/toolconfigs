@@ -6,6 +6,8 @@
 # it might not work.                                                #
 #                                                                   #
 # After installation, run 'git cc' for commands description.        #
+#                                                                   #
+# Requires Git version > 2.20 for nested alias support              #
 #####################################################################
 
 _config_present() {
@@ -33,6 +35,8 @@ PRESENT_ALIASES+="$(_alias_present sms)"
 PRESENT_ALIASES+="$(_alias_present smu)"
 PRESENT_ALIASES+="$(_alias_present smur)"
 PRESENT_ALIASES+="$(_alias_present mu)"
+PRESENT_ALIASES+="$(_alias_present g)"
+PRESENT_ALIASES+="$(_alias_present ga)"
 PRESENT_ALIASES+="$(_alias_present iadd)"
 PRESENT_ALIASES+="$(_alias_present iunstage)"
 PRESENT_ALIASES+="$(_alias_present ico)"
@@ -86,6 +90,8 @@ git config --global alias.sms		"submodule status"
 git config --global alias.smu		"submodule update"
 git config --global alias.smur		"submodule update --remote"
 git config --global alias.mu		"merge @{u}"
+git config --global alias.g		"graph"
+git config --global alias.ga		"graph --all"
 git config --global alias.iadd		"!bash ~/.git_interactive \"git add\""
 git config --global alias.iunstage	"!bash ~/.git_interactive \"git reset HEAD\""
 git config --global alias.ico		"!bash ~/.git_interactive \"git checkout --\""
