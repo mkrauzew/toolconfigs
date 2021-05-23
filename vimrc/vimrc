@@ -110,5 +110,6 @@ vnoremap <C-Delete> "+d
 nnoremap <space> za
 
 "" Use '#' and '-#' in visual mode for Python block commenting/uncommenting
-au FileType python vnoremap <silent> # :s/^/#/<cr>:noh<cr>
-au FileType python vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+"" Only lines containing at least one non-blank character will be commented
+au FileType python vnoremap <silent> # :s/^.*\S.*$/# &/<cr>:noh<cr>
+au FileType python vnoremap <silent> -# :s/^# //<cr>:noh<cr>
