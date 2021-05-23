@@ -11,7 +11,8 @@ Plugin 'tmhedberg/SimpylFold'
 " YouCompleteMe requires some additional steps to install
 " Do this after YCM has already been installed with PluginInstall
 " 1. Install jedi ('pip3 install jedi' or 'pip3 install --user jedi')
-" 2. Build autocompleter for Python an C/C++ ('cd ~/.vim/bundle/YouCompleteMe; python3 install.py --clang-completer')
+" 2. Install dependencies for autocompleter ('apt-get install build-essential cmake python3-dev')
+" 3. Build autocompleter for Python an C/C++ ('cd ~/.vim/bundle/YouCompleteMe; python3 install.py --clang-completer')
 Plugin 'Valloric/YouCompleteMe'
 " Syntastic and vim-flake8 require flake8 ('pip3 install --user flake8')
 " Syntastic can be configured to run code through flake8 automatically (e.g. on save)
