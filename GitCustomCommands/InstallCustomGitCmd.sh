@@ -119,6 +119,8 @@ echo \"\${c_WHITE}git \${c_RED}branch-cleanup\${c_NC} : prune remote-tracking br
 echo \"'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
 echo \"\${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit> \${c_NC}: find copies of a commit (for example ones that were cherry-picked).\"; \
 echo \"Warning - on big repos this may take several minutes.\n\"; \
+echo; \
+echo \" ...and many more\n\"; \
 echo \"\${c_GREEN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\${c_NC}\"; \
 echo \"\${c_GREEN}\\ =========================================================== / \${c_NC}\"; \
 echo \"\${c_GREEN} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \${c_NC}\n\"; \
