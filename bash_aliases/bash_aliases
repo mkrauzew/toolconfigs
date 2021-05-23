@@ -1,0 +1,2 @@
+alias clipin='xclip -selection clipboard -i'
+alias clipout='xclip -selection clipboard -o'
