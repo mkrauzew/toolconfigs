@@ -34,6 +34,8 @@ PRESENT_ALIASES+="$(_alias_present find-copies)"
 
 # Test if we would overwrite any other present configs
 PRESENT_CONFIGS=""
+PRESENT_CONFIGS+="$(_config_present diff.submodule)"
+PRESENT_CONFIGS+="$(_config_present push.recurseSubmodules)"
 
 if [ -n "$PRESENT_ALIASES" ]; then
 	echo "There are some commands, that are already present and would be overwritten:"
@@ -64,6 +66,10 @@ git config --global alias.lp "log -p"
 
 # OTHER CONFIGS:
 
+# Show summary also for submodules, when doing git diff
+git config --global diff.submodule log
+# When pushing, also check if there is anything to push in submodules
+git config --global push.recurseSubmodules check
 
 # COMPOSITE COMMANDS:
 
