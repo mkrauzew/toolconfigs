@@ -1,4 +1,9 @@
 " First, install Vundle: 'git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
+" After declaring plugins in .vimrc, run :PluginInstall to install them for the first time
+" :PluginUpdate updates plugins
+" To remove a plugin, remove its declaration from .vimrc and run :PluginUpdate
+" Plugin names are their paths on github, e.g. 'VundleVim/Vundle.vim' is
+" downloaded from https://github.com/VundleVim/Vundle.vim repository
 
 set nocompatible
 set hidden
