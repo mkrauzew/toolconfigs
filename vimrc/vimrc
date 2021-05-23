@@ -113,8 +113,10 @@ nmap <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>. :CtrlPTag<cr>
 
 "" Navigate buffer tabs
-nnoremap <A-Right> :bnext<CR>
 nnoremap <A-Left> :bprev<CR>
+nnoremap <A-Right> :bnext<CR>
+nnoremap <A-Down> :bdel<CR>
+nnoremap <A-Up> :enew<CR>
 
 "" Copying, cutting and pasting to clipboard (register '+')
 "" Requires X11 connection to cooperate with other applications through system clipboard
