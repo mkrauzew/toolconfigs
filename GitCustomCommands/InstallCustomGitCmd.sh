@@ -26,6 +26,10 @@ PRESENT_ALIASES+="$(_alias_present df)"
 PRESENT_ALIASES+="$(_alias_present dc)"
 PRESENT_ALIASES+="$(_alias_present lp)"
 PRESENT_ALIASES+="$(_alias_present cc)"
+PRESENT_ALIASES+="$(_alias_present smi)"
+PRESENT_ALIASES+="$(_alias_present smu)"
+PRESENT_ALIASES+="$(_alias_present smur)"
+
 PRESENT_ALIASES+="$(_alias_present try-merge)"
 PRESENT_ALIASES+="$(_alias_present try-ff)"
 PRESENT_ALIASES+="$(_alias_present graph)"
@@ -56,13 +60,16 @@ fi
 echo "Installing custom commands & configs"
 
 # SIMPLE ALIASES:
-git config --global alias.st "status"
-git config --global alias.ci "commit"
-git config --global alias.br "branch"
-git config --global alias.co "checkout"
-git config --global alias.df "diff"
-git config --global alias.dc "diff --cached"
-git config --global alias.lp "log -p"
+git config --global alias.st     "status"
+git config --global alias.ci     "commit"
+git config --global alias.br     "branch"
+git config --global alias.co     "checkout"
+git config --global alias.df     "diff"
+git config --global alias.dc     "diff --cached"
+git config --global alias.lp     "log -p"
+git config --global alias.smi    "submodule init"
+git config --global alias.smu    "submodule update"
+git config --global alias.smur   "submodule update --remote"
 
 # OTHER CONFIGS:
 
