@@ -20,6 +20,12 @@ flags = [
     '/usr/include',
     '-isystem',
     '/usr/local/include',
+    '-isystem',
+    '/usr/include/x86_64-linux-gnu',
+    '-isystem',
+    '/usr/lib/gcc/x86_64-linux-gnu/5/include',
+    '-isystem',
+    '/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed',
 ]
 
 # Add system includes
