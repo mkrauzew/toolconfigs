@@ -126,7 +126,7 @@ def FlagsForFile( filename, **kwargs ):
     data = kwargs['client_data']
     filetype = data['&filetype']
     if filetype == 'c':
-        final_flags += ['-x', 'c', '-std=c11',]
+        final_flags += ['-x', 'c', '-std=gnu11',]
     elif filetype == 'cpp':
         final_flags += ['-x', 'c++', '-std=c++14',]
 
