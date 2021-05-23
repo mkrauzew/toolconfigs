@@ -41,6 +41,7 @@ PRESENT_CONFIGS=""
 PRESENT_CONFIGS+="$(_config_present diff.submodule)"
 PRESENT_CONFIGS+="$(_config_present push.recurseSubmodules)"
 PRESENT_CONFIGS+="$(_config_present core.editor)"
+PRESENT_CONFIGS+="$(_config_present core.autocrlf)"
 
 if [ -n "$PRESENT_ALIASES" ]; then
 	echo "There are some commands, that are already present and would be overwritten:"
@@ -80,6 +81,10 @@ git config --global diff.submodule log
 git config --global push.recurseSubmodules check
 # Set editor to vim
 git config --global core.editor "vim"
+# Set autocrlf to 'input'
+# This converts CRLF to LF on commit, but not on checkout.
+# It should make sure that the repository has LF line endings
+git config --global core.autocrlf input
 
 # COMPOSITE COMMANDS:
 
