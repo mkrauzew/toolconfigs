@@ -16,7 +16,7 @@ function repeat() {
    while true
    do
       # treat all params starting from $2 as a single command to be run
-      ${*:2}
+      ${BASH} -c "${*:2}"
       sleep ${1}
    done
 
