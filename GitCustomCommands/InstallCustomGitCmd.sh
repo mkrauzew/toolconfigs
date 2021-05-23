@@ -93,10 +93,10 @@ git config --global alias.mu		"merge @{u}"
 git config --global alias.gr		"graph"
 git config --global alias.ga		"graph --all"
 git config --global alias.iadd		"!bash ~/.git_interactive \"git add\""
-git config --global alias.iunstage	"!bash ~/.git_interactive \"git reset HEAD\""
 git config --global alias.ico		"!bash ~/.git_interactive \"git checkout --\""
 git config --global alias.idf		"!bash ~/.git_interactive \"git diff\""
 git config --global alias.idc		"!bash ~/.git_interactive \"git diff --cached\""
+git config --global alias.iunstage	"!bash ~/.git_interactive \"git reset HEAD\""
 git config --global alias.istash	"!bash ~/.git_interactive \"git stash push --\""
 
 # OTHER CONFIGS:
@@ -121,23 +121,46 @@ local c_WHITE='\\033[37;1m'; \
 local c_GREEN='\\033[32;1m'; \
 local c_NC='\\033[0m'; \
 echo; \
-echo \"\${c_GREEN} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \${c_NC}\"; \
-echo \"\${c_GREEN}/ ================ MKW's Custom Git Commands ================ \\ \${c_NC}\"; \
-echo \"\${c_GREEN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\${c_NC}\n\"; \
-echo \"\${c_WHITE}git \${c_RED}try-merge\${c_WHITE} <dev> <master> \${c_NC}: see how merge of dev into master would go.\"; \
-echo \"In case of conflicts, .our will be master's side and .their will be dev's side.\n\"; \
-echo \"\${c_WHITE}git \${c_RED}try-ff\${c_WHITE} <from> <to> \${c_NC}: check if fast-forward merge is possible.\n\"; \
-echo \"\${c_WHITE}git \${c_RED}graph\${c_WHITE} [<revision range>|--all] \${c_NC}: git log --graph with nice format.\n\"; \
-echo \"\${c_WHITE}git \${c_RED}belongs\${c_WHITE} <commit> \${c_NC}: display branches that the <commit> belongs to.\n\"; \
-echo \"\${c_WHITE}git \${c_RED}branch-cleanup\${c_NC} : prune remote-tracking branches for current remote, then delete all local branches that track gone remotes.\"; \
-echo \"'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
-echo \"\${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit> \${c_NC}: find copies of a commit (for example ones that were cherry-picked).\"; \
-echo \"Warning - on big repos this may take several minutes.\n\"; \
+echo \"\${c_GREEN} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \${c_NC}\"; \
+echo \"\${c_GREEN}/ =============================== MKW's Custom Git Commands =============================== \\ \${c_NC}\"; \
+echo \"\${c_GREEN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\${c_NC}\n\"; \
+echo \"\${c_GREEN}Requires Git >= 2.20 for full compatibility. Some commands may not work in lower versions.\${c_NC}\n\"; \
+echo \"\${c_WHITE}REGULAR COMMANDS\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}belongs\${c_WHITE} <commit>\${c_NC}               : display branches that the <commit> belongs to.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}follow\${c_WHITE} <path>\${c_NC}                  : display file history across commits.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}try-merge\${c_WHITE} <dev> <master>\${c_NC}       : see how merge of dev into master would go. In case of conflicts, \${c_WHITE}.our\${c_NC} will be master's side and \${c_WHITE}.their\${c_NC} will be dev's side.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}try-ff\${c_WHITE} <from> <to>\${c_NC}             : check if fast-forward merge is possible.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}graph\${c_WHITE} [<revision range>|--all]\${c_NC} : git log --graph with nice format.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}branch-cleanup\${c_NC}                 : prune remote-tracking branches for current remote, then delete all local branches that track gone remotes. 'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit>\${c_NC}           : find copies of a commit (for example ones that were cherry-picked). Warning - on big repos this may take several minutes.\n\"; \
 echo; \
-echo \" ...and many more\n\"; \
-echo \"\${c_GREEN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\${c_NC}\"; \
-echo \"\${c_GREEN}\\ =========================================================== / \${c_NC}\"; \
-echo \"\${c_GREEN} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \${c_NC}\n\"; \
+echo \"\${c_WHITE}INTERACTIVE COMMANDS\${c_NC}\n\"; \
+echo \"\${c_NC}These commands allow to interactively choose files to perform operations on. Only files that would be visible in \${c_WHITE}git status --short\${c_NC} are available. It is required to have package \${c_WHITE}dialog\${c_NC} installed.\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}iadd\${c_NC}     : interactive \${c_WHITE}git add\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}ico\${c_NC}      : interactive \${c_WHITE}git checkout --\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}idf\${c_NC}      : interactive \${c_WHITE}git diff\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}idc\${c_NC}      : interactive \${c_WHITE}git diff --cached\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}iunstage\${c_NC} : interactive \${c_WHITE}git reset HEAD\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}istash\${c_NC}   : interactive \${c_WHITE}git stash push --\${c_NC}\n\"; \
+echo; \
+echo \"\${c_WHITE}SHORTHAND ALIASES\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}st\${c_NC}   : \${c_WHITE}git \${c_RED}status\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}ci\${c_NC}   : \${c_WHITE}git \${c_RED}commit\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}br\${c_NC}   : \${c_WHITE}git \${c_RED}branch\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}co\${c_NC}   : \${c_WHITE}git \${c_RED}checkout\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}df\${c_NC}   : \${c_WHITE}git \${c_RED}diff\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}dc\${c_NC}   : \${c_WHITE}git \${c_RED}diff --cached\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}lp\${c_NC}   : \${c_WHITE}git \${c_RED}log -p\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}mu\${c_NC}   : \${c_WHITE}git \${c_RED}merge @{u}\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}gr\${c_NC}   : \${c_WHITE}git \${c_RED}graph\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}ga\${c_NC}   : \${c_WHITE}git \${c_RED}graph --all\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}smi\${c_NC}  : \${c_WHITE}git \${c_RED}submodule init\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}sms\${c_NC}  : \${c_WHITE}git \${c_RED}submodule status\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}smu\${c_NC}  : \${c_WHITE}git \${c_RED}submodule update\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}smur\${c_NC} : \${c_WHITE}git \${c_RED}submodule update --remote\${c_NC}\n\"; \
+echo \"\${c_GREEN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\${c_NC}\"; \
+echo \"\${c_GREEN}\\ ========================================================================================= / \${c_NC}\"; \
+echo \"\${c_GREEN} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \${c_NC}\n\"; \
 }; f"
 
 # check how the merge of dev into master will go: git try-merge dev master
