@@ -40,6 +40,7 @@ PRESENT_ALIASES+="$(_alias_present find-copies)"
 PRESENT_CONFIGS=""
 PRESENT_CONFIGS+="$(_config_present diff.submodule)"
 PRESENT_CONFIGS+="$(_config_present push.recurseSubmodules)"
+PRESENT_CONFIGS+="$(_config_present core.editor)"
 
 if [ -n "$PRESENT_ALIASES" ]; then
 	echo "There are some commands, that are already present and would be overwritten:"
@@ -77,6 +78,8 @@ git config --global alias.smur   "submodule update --remote"
 git config --global diff.submodule log
 # When pushing, also check if there is anything to push in submodules
 git config --global push.recurseSubmodules check
+# Set editor to vim
+git config --global core.editor "vim"
 
 # COMPOSITE COMMANDS:
 
