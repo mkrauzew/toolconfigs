@@ -1,0 +1,97 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+" YouCompleteMe requires some additional steps to install
+" Do this after YCM has already been installed with PluginInstall
+" 1. Install jedi ('pip3 install jedi' or 'pip3 install --user jedi')
+" 2. Build autocompleter for Python an C/C++ ('cd ~/.vim/bundle/YouCompleteMe; python3 install.py --clang-completer')
+Plugin 'Valloric/YouCompleteMe'
+" Syntastic and vim-flake8 require flake8 ('pip3 install --user flake8')
+" Syntastic can be configured to run code through flake8 automatically (e.g. on save)
+" vim-flake allows you to run our code through flake8 synax checker by pressing <F7>
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'ap/vim-buftabline'
+
+" add all your plugins before this line
+call vundle#end()
+
+filetype plugin indent on
+
+" Make sure the <leader> is backslash
+let mapleader = "\\"
+
+" By default, disable automatic wrapping
+set textwidth=0
+
+" Syntax highlight and numbering for Python
+au FileType python
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set expandtab |
+    \ set textwidth=79 |
+    \ set autoindent |
+    \ set foldmethod=indent |
+    \ set fileformat=unix |
+    \ let python_highlight_all=1 |
+    \ syntax on |
+    \ set number |
+    \ map <buffer> <F6> :w<cr>:!python3 %<cr>
+
+" UTF-8 encoding
+set encoding=utf-8
+
+" Lighter fonts
+set background=dark
+
+" BufTabLine customizations
+let g:buftabline_show = 1
+let g:buftabline_numbers = 1
+let g:buftabline_indicators = 1
+
+" Syntastic customizations
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+
+" SimpylFold customizations
+let g:SimpylFold_docstring_preview = 1
+
+" YCM customizations
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completon = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" New splits should apprear below or to the right
+set splitbelow
+set splitright
+
+" Key mappings
+
+"" Toggle NERDTree (and PowerLine at the same time)
+nmap <C-n> :NERDTreeToggle<CR>
+"" Use space to open folds
+nnoremap <space> za
