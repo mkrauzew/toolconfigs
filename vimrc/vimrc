@@ -34,8 +34,11 @@ filetype plugin indent on
 " Make sure the <leader> is backslash
 let mapleader = "\\"
 
-" By default, disable automatic wrapping
+" Wrapping and folding settings
 set textwidth=0
+set foldmethod=indent
+set foldlevel=99
+set foldlevelstart=99
 
 " Syntax highlight and numbering for Python
 au FileType python
@@ -45,7 +48,6 @@ au FileType python
     \ set expandtab |
     \ set textwidth=79 |
     \ set autoindent |
-    \ set foldmethod=indent |
     \ set fileformat=unix |
     \ let python_highlight_all=1 |
     \ syntax on |
