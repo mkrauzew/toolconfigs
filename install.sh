@@ -45,22 +45,22 @@ for s in ${SELECTION}; do
     case "${s}" in
         "1")
             echo ">>>>>> INSTALLING: Custom Git Commands <<<<<<"
-	    GitCustomCommands/InstallCustomGitCmd.sh
+            GitCustomCommands/InstallCustomGitCmd.sh
             echo
             ;;
         "2")
             echo ">>>>>> INSTALLING: .vimrc <<<<<<"
-	    cp -i vimrc/vimrc ~/.vimrc 
+            cp -i vimrc/vimrc ~/.vimrc 
             echo
             ;;
         "3")
             echo ">>>>>> INSTALLING: .bash_aliases <<<<<<"
-	    cp -i bash_aliases/bash_aliases ~/.bash_aliases
+            cp -i bash_aliases/bash_aliases ~/.bash_aliases
             echo
             ;;
         "4")
             echo ">>>>>> INSTALLING: .tmux.conf <<<<<<"
-	    cp -i tmux.conf/tmux.conf ~/.tmux.conf
+            cp -i tmux.conf/tmux.conf ~/.tmux.conf
             echo
             ;;
      esac
