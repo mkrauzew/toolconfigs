@@ -17,9 +17,10 @@ SELECTION=$(dialog \
     0 0 8 \
     "1" "Custom Git Commands" off \
     "2" ".vimrc" off \
-    "3" ".bash_aliases" off \
-    "4" ".bash_functions" off \
-    "5" ".tmux.conf" off \
+    "3" ".dialogrc" off \
+    "4" ".bash_aliases" off \
+    "5" ".bash_functions" off \
+    "6" ".tmux.conf" off \
     2>&1 1>&3)
 
 EXIT_STATUS=$?
@@ -58,16 +59,21 @@ for s in ${SELECTION}; do
             echo
             ;;
         "3")
+            echo ">>>>>> INSTALLING: .dialogrc <<<<<<"
+            cp -i dialogrc/dialogrc ~/.dialogrc 
+            echo
+            ;;
+        "4")
             echo ">>>>>> INSTALLING: .bash_aliases <<<<<<"
             cp -i bash_aliases/bash_aliases ~/.bash_aliases
             echo
             ;;
-        "4")
+        "5")
             echo ">>>>>> INSTALLING: .bash_functions <<<<<<"
             cp -i bash_functions/bash_functions ~/.bash_functions
             echo
             ;;
-        "5")
+        "6")
             echo ">>>>>> INSTALLING: .tmux.conf <<<<<<"
             cp -i tmux.conf/tmux.conf ~/.tmux.conf
             echo
