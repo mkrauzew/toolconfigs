@@ -8,37 +8,52 @@
 # After installation, run 'git cc' for commands description.        #
 #####################################################################
 
-_symbol_present() {
+_config_present() {
+	test -n "$(git config --global $1)" && echo "$1 "
+}
+
+_alias_present() {
 	test -n "$(git config --global alias.$1)" && echo "$1 "
 }
-PRESENT_SYMBOLS=""
 
-# Test if we would overwrite any present symbols
-PRESENT_SYMBOLS+="$(_symbol_present st)"
-PRESENT_SYMBOLS+="$(_symbol_present ci)"
-PRESENT_SYMBOLS+="$(_symbol_present br)"
-PRESENT_SYMBOLS+="$(_symbol_present co)"
-PRESENT_SYMBOLS+="$(_symbol_present df)"
-PRESENT_SYMBOLS+="$(_symbol_present dc)"
-PRESENT_SYMBOLS+="$(_symbol_present lp)"
-PRESENT_SYMBOLS+="$(_symbol_present cc)"
-PRESENT_SYMBOLS+="$(_symbol_present try-merge)"
-PRESENT_SYMBOLS+="$(_symbol_present try-ff)"
-PRESENT_SYMBOLS+="$(_symbol_present graph)"
-PRESENT_SYMBOLS+="$(_symbol_present branch-cleanup)"
-PRESENT_SYMBOLS+="$(_symbol_present find-copies)"
+# Test if we would overwrite any present aliases
+PRESENT_ALIASES=""
+PRESENT_ALIASES+="$(_alias_present st)"
+PRESENT_ALIASES+="$(_alias_present ci)"
+PRESENT_ALIASES+="$(_alias_present br)"
+PRESENT_ALIASES+="$(_alias_present co)"
+PRESENT_ALIASES+="$(_alias_present df)"
+PRESENT_ALIASES+="$(_alias_present dc)"
+PRESENT_ALIASES+="$(_alias_present lp)"
+PRESENT_ALIASES+="$(_alias_present cc)"
+PRESENT_ALIASES+="$(_alias_present try-merge)"
+PRESENT_ALIASES+="$(_alias_present try-ff)"
+PRESENT_ALIASES+="$(_alias_present graph)"
+PRESENT_ALIASES+="$(_alias_present branch-cleanup)"
+PRESENT_ALIASES+="$(_alias_present find-copies)"
 
-if [ -n "$PRESENT_SYMBOLS" ]; then
+# Test if we would overwrite any other present configs
+PRESENT_CONFIGS=""
+
+if [ -n "$PRESENT_ALIASES" ]; then
 	echo "There are some commands, that are already present and would be overwritten:"
-	echo -e "\t$PRESENT_SYMBOLS"
+	echo -e "\t$PRESENT_ALIASES"
 	read -n 1 -r -p "Do you wish to continue? [y/n]" yn
 	echo
-	[ "$yn" != "y" ] && exit 1
+	[ "$yn" != "y" ] && echo "Aborting" && exit 1
 fi
 
-echo "Installing custom commands"
+if [ -n "$PRESENT_CONFIGS" ]; then
+	echo "There are some config options, that are already present and would be overwritten:"
+	echo -e "\t$PRESENT_CONFIGS"
+	read -n 1 -r -p "Do you wish to continue? [y/n]" yn
+	echo
+	[ "$yn" != "y" ] && echo "Aborting" && exit 1
+fi
 
-# aliases
+echo "Installing custom commands & configs"
+
+# SIMPLE ALIASES:
 git config --global alias.st "status"
 git config --global alias.ci "commit"
 git config --global alias.br "branch"
@@ -46,6 +61,11 @@ git config --global alias.co "checkout"
 git config --global alias.df "diff"
 git config --global alias.dc "diff --cached"
 git config --global alias.lp "log -p"
+
+# OTHER CONFIGS:
+
+
+# COMPOSITE COMMANDS:
 
 # list custom commands
 git config --global alias.cc "!f() { \
