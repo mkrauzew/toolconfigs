@@ -110,6 +110,10 @@ nmap <C-n> :NERDTreeToggle<CR>
 "" Use Ctrl-P to find tags
 nnoremap <leader>. :CtrlPTag<cr>
 
+"" Navigate buffer tabs
+nnoremap <A-Right> :bnext<CR>
+nnoremap <A-Left> :bprev<CR>
+
 "" Copying, cutting and pasting to clipboard (register '+')
 "" Requires X11 connection to cooperate with other applications through system clipboard
 nnoremap <S-Insert> "+p
