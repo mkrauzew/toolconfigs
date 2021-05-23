@@ -47,20 +47,18 @@ set foldlevel=99
 set foldlevelstart=99
 
 " Syntax highlight and numbering
-au FileType python
+au FileType c,cpp,python
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set expandtab |
     \ set textwidth=79 |
     \ set autoindent |
-    \ set fileformat=unix |
+    \ set fileformat=unix
+
+au FileType python
     \ let python_highlight_all=1 |
     \ map <buffer> <F6> :w<cr>:!python3 %<cr>
-
-au FileType c,cpp,python
-    \ syntax on |
-    \ set number
 
 " UTF-8 encoding
 set encoding=utf-8
