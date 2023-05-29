@@ -27,6 +27,7 @@ PRESENT_ALIASES+="$(_alias_present belongs)"
 PRESENT_ALIASES+="$(_alias_present co)"
 PRESENT_ALIASES+="$(_alias_present df)"
 PRESENT_ALIASES+="$(_alias_present dc)"
+PRESENT_ALIASES+="$(_alias_present l)"
 PRESENT_ALIASES+="$(_alias_present follow)"
 PRESENT_ALIASES+="$(_alias_present lp)"
 PRESENT_ALIASES+="$(_alias_present cc)"
@@ -35,7 +36,7 @@ PRESENT_ALIASES+="$(_alias_present sms)"
 PRESENT_ALIASES+="$(_alias_present smu)"
 PRESENT_ALIASES+="$(_alias_present smur)"
 PRESENT_ALIASES+="$(_alias_present mu)"
-PRESENT_ALIASES+="$(_alias_present g)"
+PRESENT_ALIASES+="$(_alias_present gr)"
 PRESENT_ALIASES+="$(_alias_present ga)"
 PRESENT_ALIASES+="$(_alias_present iadd)"
 PRESENT_ALIASES+="$(_alias_present iunstage)"
@@ -84,8 +85,9 @@ git config --global alias.belongs	"branch -a --contains"
 git config --global alias.co		"checkout"
 git config --global alias.df		"diff"
 git config --global alias.dc		"diff --cached"
-git config --global alias.follow	"log -p --all --follow --full-history --"
-git config --global alias.lp		"log -p"
+git config --global alias.l		"log --show-signature"
+git config --global alias.follow	"log -p --all --follow --full-history --show-signature --"
+git config --global alias.lp		"log -p --show-signature"
 git config --global alias.smi		"submodule init"
 git config --global alias.sms		"submodule status"
 git config --global alias.smu		"submodule update"
@@ -152,7 +154,8 @@ echo \" \${c_WHITE}git \${c_RED}br\${c_NC}   : \${c_WHITE}git \${c_RED}branch\${
 echo \" \${c_WHITE}git \${c_RED}co\${c_NC}   : \${c_WHITE}git \${c_RED}checkout\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}df\${c_NC}   : \${c_WHITE}git \${c_RED}diff\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}dc\${c_NC}   : \${c_WHITE}git \${c_RED}diff --cached\${c_NC}\n\"; \
-echo \" \${c_WHITE}git \${c_RED}lp\${c_NC}   : \${c_WHITE}git \${c_RED}log -p\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}l\${c_NC}    : \${c_WHITE}git \${c_RED}log --show-signature\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}lp\${c_NC}   : \${c_WHITE}git \${c_RED}log -p --show-signature\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}mu\${c_NC}   : \${c_WHITE}git \${c_RED}merge @{u}\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}gr\${c_NC}   : \${c_WHITE}git \${c_RED}graph\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}ga\${c_NC}   : \${c_WHITE}git \${c_RED}graph --all\${c_NC}\n\"; \
@@ -181,7 +184,7 @@ echo 'FF not possible.'; \
 fi; }; f"
 
 # git log --graph with nice format
-git config --global alias.graph "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%n '"
+git config --global alias.graph "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - Sign: %C(bold)%G?%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%n '"
 
 # prune all remote-tracking branches for current remote, then delete any local branches that no longer point to an existing remote tracking branch
 git config --global alias.branch-cleanup "!f() { git fetch --prune; git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D; }; f"
