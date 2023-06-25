@@ -22,6 +22,7 @@ _alias_present() {
 PRESENT_ALIASES=""
 PRESENT_ALIASES+="$(_alias_present st)"
 PRESENT_ALIASES+="$(_alias_present ci)"
+PRESENT_ALIASES+="$(_alias_present cin)"
 PRESENT_ALIASES+="$(_alias_present br)"
 PRESENT_ALIASES+="$(_alias_present belongs)"
 PRESENT_ALIASES+="$(_alias_present co)"
@@ -80,6 +81,7 @@ echo "Installing custom commands & configs"
 # SIMPLE ALIASES:
 git config --global alias.st		"status"
 git config --global alias.ci		"commit"
+git config --global alias.cin		"commit --no-gpg-sign"
 git config --global alias.br		"branch"
 git config --global alias.belongs	"branch -a --contains"
 git config --global alias.co		"checkout"
@@ -150,6 +152,7 @@ echo; \
 echo \"\${c_WHITE}SHORTHAND ALIASES\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}st\${c_NC}   : \${c_WHITE}git \${c_RED}status\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}ci\${c_NC}   : \${c_WHITE}git \${c_RED}commit\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}cin\${c_NC}  : \${c_WHITE}git \${c_RED}commit --no-gpg-sign\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}br\${c_NC}   : \${c_WHITE}git \${c_RED}branch\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}co\${c_NC}   : \${c_WHITE}git \${c_RED}checkout\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}df\${c_NC}   : \${c_WHITE}git \${c_RED}diff\${c_NC}\n\"; \
