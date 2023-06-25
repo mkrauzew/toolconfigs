@@ -163,6 +163,16 @@ echo \" \${c_WHITE}git \${c_RED}smi\${c_NC}  : \${c_WHITE}git \${c_RED}submodule
 echo \" \${c_WHITE}git \${c_RED}sms\${c_NC}  : \${c_WHITE}git \${c_RED}submodule status\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}smu\${c_NC}  : \${c_WHITE}git \${c_RED}submodule update\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}smur\${c_NC} : \${c_WHITE}git \${c_RED}submodule update --remote\${c_NC}\n\"; \
+echo; \
+echo \"\${c_WHITE}SIGNATURE STATUSES - LEGEND\${c_NC}\n\"; \
+echo \" \${c_WHITE}G\${c_NC}   : \${c_WHITE}Good signature\${c_NC}\n\"; \
+echo \" \${c_WHITE}B\${c_NC}   : \${c_WHITE}Bad signature\${c_NC}\n\"; \
+echo \" \${c_WHITE}U\${c_NC}   : \${c_WHITE}Good signature with unknown validity\${c_NC}\n\"; \
+echo \" \${c_WHITE}X\${c_NC}   : \${c_WHITE}Good signature that has expired\${c_NC}\n\"; \
+echo \" \${c_WHITE}Y\${c_NC}   : \${c_WHITE}Good signature made by expired key\${c_NC}\n\"; \
+echo \" \${c_WHITE}R\${c_NC}   : \${c_WHITE}Good signature made by revoked key\${c_NC}\n\"; \
+echo \" \${c_WHITE}E\${c_NC}   : \${c_WHITE}Signature cannot be checked (e.g. missing key)\${c_NC}\n\"; \
+echo \" \${c_WHITE}N\${c_NC}   : \${c_WHITE}No signature\${c_NC}\n\"; \
 echo \"\${c_GREEN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\${c_NC}\"; \
 echo \"\${c_GREEN}\\ ========================================================================================= / \${c_NC}\"; \
 echo \"\${c_GREEN} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \${c_NC}\n\"; \
@@ -184,8 +194,7 @@ echo 'FF not possible.'; \
 fi; }; f"
 
 # git log --graph with nice format
-git config --global alias.graph "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - Sign: %C(bold)%G?%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%n '"
-
+git config --global alias.graph "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an [%G?]%C(reset)%n '"
 # prune all remote-tracking branches for current remote, then delete any local branches that no longer point to an existing remote tracking branch
 git config --global alias.branch-cleanup "!f() { git fetch --prune; git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D; }; f"
 
