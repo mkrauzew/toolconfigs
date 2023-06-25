@@ -136,7 +136,7 @@ echo \" \${c_WHITE}git \${c_RED}follow\${c_WHITE} <path>\${c_NC}                
 echo \" \${c_WHITE}git \${c_RED}try-merge\${c_WHITE} <dev> <master>\${c_NC}        : see how merge of dev into master would go. In case of conflicts, \${c_WHITE}.our\${c_NC} will be master's side and \${c_WHITE}.their\${c_NC} will be dev's side.\n\"; \
 echo \" \${c_WHITE}git \${c_RED}try-ff\${c_WHITE} <from> <to>\${c_NC}              : check if fast-forward merge is possible.\n\"; \
 echo \" \${c_WHITE}git \${c_RED}graph\${c_WHITE} [<revision range>|--all]\${c_NC}  : git log --graph with nice format.\n\"; \
-echo \" \${c_WHITE}git \${c_RED}resign\${c_WHITE} <base revision>\${c_NC}  : as in re-sign, rebases commits on top of <base revision>, while applying signatures to them.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}resign\${c_WHITE} <base revision>\${c_NC}          : as in re-sign, rebases commits on top of <base revision>, while applying signatures to them.\n\"; \
 echo \" \${c_WHITE}git \${c_RED}branch-cleanup\${c_NC}                  : prune remote-tracking branches for current remote, then delete all local branches that track gone remotes. 'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
 echo \" \${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit>\${c_NC}            : find copies of a commit (for example ones that were cherry-picked). Warning - on big repos this may take several minutes.\n\"; \
 echo \" \${c_WHITE}git \${c_RED}export\${c_WHITE} <commit> <target dir>\${c_NC}    : copy repository contents as they were in \${c_WHITE}commit\${c_NC} to \${c_WHITE}target dir\${c_NC}.\n\"; \
