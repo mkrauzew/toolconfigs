@@ -201,7 +201,7 @@ fi; }; f"
 git config --global alias.graph "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an [%G?]%C(reset)%n '"
 
 # rebase commits on top of base revision, no edits, just apply signatures
-git config --global alias.resign "rebase --gpg-sign --no-verify --stat --committer-date-is-author-date --onto"
+git config --global alias.resign "rebase --gpg-sign --no-verify --stat --committer-date-is-author-date"
 
 # prune all remote-tracking branches for current remote, then delete any local branches that no longer point to an existing remote tracking branch
 git config --global alias.branch-cleanup "!f() { git fetch --prune; git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D; }; f"
