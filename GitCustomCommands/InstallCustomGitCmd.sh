@@ -45,6 +45,8 @@ PRESENT_ALIASES+="$(_alias_present ico)"
 PRESENT_ALIASES+="$(_alias_present idf)"
 PRESENT_ALIASES+="$(_alias_present idc)"
 PRESENT_ALIASES+="$(_alias_present istash)"
+PRESENT_ALIASES+="$(_alias_present iwl)"
+PRESENT_ALIASES+="$(_alias_present iws)"
 
 PRESENT_ALIASES+="$(_alias_present try-merge)"
 PRESENT_ALIASES+="$(_alias_present try-ff)"
@@ -103,6 +105,8 @@ git config --global alias.idf		"!bash ~/.git_interactive \"git diff\""
 git config --global alias.idc		"!bash ~/.git_interactive \"git diff --cached\""
 git config --global alias.iunstage	"!bash ~/.git_interactive \"git reset HEAD\""
 git config --global alias.istash	"!bash ~/.git_interactive \"git stash push --\""
+git config --global alias.iwl		"instaweb --local"
+git config --global alias.iws		"instaweb --stop"
 
 # OTHER CONFIGS:
 
@@ -140,6 +144,8 @@ echo \" \${c_WHITE}git \${c_RED}resign\${c_WHITE} <base revision>\${c_NC}       
 echo \" \${c_WHITE}git \${c_RED}branch-cleanup\${c_NC}                  : prune remote-tracking branches for current remote, then delete all local branches that track gone remotes. 'Current remote' means remote tracked by current branch, or origin if current branch is non-tracking.\n\"; \
 echo \" \${c_WHITE}git \${c_RED}find-copies\${c_WHITE} <commit>\${c_NC}            : find copies of a commit (for example ones that were cherry-picked). Warning - on big repos this may take several minutes.\n\"; \
 echo \" \${c_WHITE}git \${c_RED}export\${c_WHITE} <commit> <target dir>\${c_NC}    : copy repository contents as they were in \${c_WHITE}commit\${c_NC} to \${c_WHITE}target dir\${c_NC}.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}iwl\${c_WHITE} [--port=<port>]\${c_NC}             : start local webserver and browser for GUI presentation of repository. Default port is 1234. May require external software - on Ubuntu you should install \${c_WHITE}lighttpd\${c_NC} and \${c_WHITE}libcgi-pm-perl\${c_NC}.\n\"; \
+echo \" \${c_WHITE}git \${c_RED}iws\${c_WHITE}\${c_NC}                             : stop the webserver.\n\"; \
 echo; \
 echo \"\${c_WHITE}INTERACTIVE COMMANDS\${c_NC}\n\"; \
 echo \"\${c_NC}These commands allow to interactively choose files to perform operations on. Only files that would be visible in \${c_WHITE}git status --short\${c_NC} are available. It is required to have package \${c_WHITE}dialog\${c_NC} installed.\${c_NC}\n\"; \
