@@ -28,9 +28,12 @@ PRESENT_ALIASES+="$(_alias_present belongs)"
 PRESENT_ALIASES+="$(_alias_present co)"
 PRESENT_ALIASES+="$(_alias_present df)"
 PRESENT_ALIASES+="$(_alias_present dc)"
+PRESENT_ALIASES+="$(_alias_present s)"
 PRESENT_ALIASES+="$(_alias_present l)"
-PRESENT_ALIASES+="$(_alias_present follow)"
+PRESENT_ALIASES+="$(_alias_present ll)"
 PRESENT_ALIASES+="$(_alias_present lp)"
+PRESENT_ALIASES+="$(_alias_present llp)"
+PRESENT_ALIASES+="$(_alias_present follow)"
 PRESENT_ALIASES+="$(_alias_present cc)"
 PRESENT_ALIASES+="$(_alias_present smi)"
 PRESENT_ALIASES+="$(_alias_present sms)"
@@ -89,9 +92,12 @@ git config --global alias.belongs	"branch -a --contains"
 git config --global alias.co		"checkout"
 git config --global alias.df		"diff"
 git config --global alias.dc		"diff --cached"
+git config --global alias.s		"show --show-signature --pretty=fuller"
 git config --global alias.l		"log --show-signature"
-git config --global alias.follow	"log -p --all --follow --full-history --show-signature --"
+git config --global alias.ll		"log --show-signature --pretty=fuller"
 git config --global alias.lp		"log -p --show-signature"
+git config --global alias.llp		"log -p --show-signature --pretty=fuller"
+git config --global alias.follow	"log -p --all --follow --full-history --show-signature --"
 git config --global alias.smi		"submodule init"
 git config --global alias.sms		"submodule status"
 git config --global alias.smu		"submodule update"
@@ -164,8 +170,11 @@ echo \" \${c_WHITE}git \${c_RED}br\${c_NC}   : \${c_WHITE}git \${c_RED}branch\${
 echo \" \${c_WHITE}git \${c_RED}co\${c_NC}   : \${c_WHITE}git \${c_RED}checkout\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}df\${c_NC}   : \${c_WHITE}git \${c_RED}diff\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}dc\${c_NC}   : \${c_WHITE}git \${c_RED}diff --cached\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}s\${c_NC}    : \${c_WHITE}git \${c_RED}show --show-signature --pretty=fuller\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}l\${c_NC}    : \${c_WHITE}git \${c_RED}log --show-signature\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}ll\${c_NC}   : \${c_WHITE}git \${c_RED}log --show-signature --pretty=fuller\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}lp\${c_NC}   : \${c_WHITE}git \${c_RED}log -p --show-signature\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}llp\${c_NC}  : \${c_WHITE}git \${c_RED}log -p --show-signature --pretty=fuller\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}mu\${c_NC}   : \${c_WHITE}git \${c_RED}merge @{u}\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}gr\${c_NC}   : \${c_WHITE}git \${c_RED}graph\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}ga\${c_NC}   : \${c_WHITE}git \${c_RED}graph --all\${c_NC}\n\"; \
