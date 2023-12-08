@@ -29,6 +29,7 @@ PRESENT_ALIASES+="$(_alias_present co)"
 PRESENT_ALIASES+="$(_alias_present df)"
 PRESENT_ALIASES+="$(_alias_present dc)"
 PRESENT_ALIASES+="$(_alias_present s)"
+PRESENT_ALIASES+="$(_alias_present ss)"
 PRESENT_ALIASES+="$(_alias_present l)"
 PRESENT_ALIASES+="$(_alias_present ll)"
 PRESENT_ALIASES+="$(_alias_present lp)"
@@ -93,6 +94,7 @@ git config --global alias.co		"checkout"
 git config --global alias.df		"diff"
 git config --global alias.dc		"diff --cached"
 git config --global alias.s		"show --show-signature --pretty=fuller"
+git config --global alias.ss		"show --show-signature --pretty=fuller --stat"
 git config --global alias.l		"log --show-signature"
 git config --global alias.ll		"log --show-signature --pretty=fuller"
 git config --global alias.lp		"log -p --show-signature"
@@ -171,6 +173,7 @@ echo \" \${c_WHITE}git \${c_RED}co\${c_NC}   : \${c_WHITE}git \${c_RED}checkout\
 echo \" \${c_WHITE}git \${c_RED}df\${c_NC}   : \${c_WHITE}git \${c_RED}diff\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}dc\${c_NC}   : \${c_WHITE}git \${c_RED}diff --cached\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}s\${c_NC}    : \${c_WHITE}git \${c_RED}show --show-signature --pretty=fuller\${c_NC}\n\"; \
+echo \" \${c_WHITE}git \${c_RED}ss\${c_NC}   : \${c_WHITE}git \${c_RED}show --show-signature --pretty=fuller --stat\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}l\${c_NC}    : \${c_WHITE}git \${c_RED}log --show-signature\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}ll\${c_NC}   : \${c_WHITE}git \${c_RED}log --show-signature --pretty=fuller\${c_NC}\n\"; \
 echo \" \${c_WHITE}git \${c_RED}lp\${c_NC}   : \${c_WHITE}git \${c_RED}log -p --show-signature\${c_NC}\n\"; \
